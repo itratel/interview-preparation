@@ -24,23 +24,25 @@ public class QuickSort {
      * @return array
      */
     private static int[] sort(int[] array,int low, int high){
-        int left=low;
-        int right=high;
+        int left = low;
+        int right = high;
         //用数组的第一个记录作为分区元素
-        int key=array[left];
-        while(left!=right){
-            //从右向左扫描，找第一个码值小于key的记录，并交换到key
-            while(left<right&&array[right]>=key){
+        int temp = array[left];
+        // 从左右两边交替扫描，直到left = right
+        while(left != right){
+            //从右向左扫描，找第一个码值小于temp的记录，并交换到temp
+            while(left<right&&array[right]>=temp){
                 --right;
             }
             array[left]=array[right];
-            //从左向右扫描，找第一个码值大于key的记录，并交换到右边
-            while(left<right&&array[left]<=key){
+            //从左向右扫描，找第一个码值大于temp的记录，并交换到右边
+            while(left<right&&array[left]<=temp){
                 ++left;
             }
             array[right]=array[left];
         }
-        array[left]=key;
+        //基准元素归位
+        array[right]=temp;
         sort(array,low,left-1);
         sort(array,left+1,high);
         return array;
