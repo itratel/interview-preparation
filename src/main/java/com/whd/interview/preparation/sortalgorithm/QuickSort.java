@@ -11,41 +11,50 @@ import static com.whd.interview.preparation.sortalgorithm.ArrayUtils.printArray;
 public class QuickSort {
 
     public static void main(String[] args) {
-        int[] array = newArrayByLength(20);
+        int[] array = newArrayByLength(10);
         printArray( array, "Before sort: ");
-        int[] sorts = sort(array, 0, array.length - 1);
-        printArray(sorts, "After sort: ");
+        sort(array, 0, array.length - 1);
+        printArray(array, "After sort: ");
     }
 
+    /***
+     *
+     * @param array array
+     * @param low low
+     * @param high high
+     * @return int
+     */
+    private static int partition(int[] array, int low, int high){
+        //固定的切分方式
+        int key = array[low];
+        while(low < high){
+            while(array[high] >= key && high > low){
+                high--;
+            }
+            array[low] = array[high];
+            while(array[low] <= key && high > low){
+                low++;
+            }
+            array[high] = array[low];
+        }
+        array[high] = key;
+        return high;
+    }
 
     /***
      * QuickSort
-     * @param array array to sort
-     * @return array
+     * @param array
+     * @param low
+     * @param high
      */
-    private static int[] sort(int[] array,int low, int high){
-        int left = low;
-        int right = high;
-        //用数组的第一个记录作为分区元素
-        int temp = array[left];
-        // 从左右两边交替扫描，直到left = right
-        while(left != right){
-            //从右向左扫描，找第一个码值小于temp的记录，并交换到temp
-            while(left<right&&array[right]>=temp){
-                --right;
-            }
-            array[left]=array[right];
-            //从左向右扫描，找第一个码值大于temp的记录，并交换到右边
-            while(left<right&&array[left]<=temp){
-                ++left;
-            }
-            array[right]=array[left];
+    private static void sort(int[] array,int low ,int high){
+        if(low >= high){
+            return;
         }
-        //基准元素归位
-        array[right]=temp;
-        sort(array,low,left-1);
-        sort(array,left+1,high);
-        return array;
+        int index = partition(array, low, high);
+        System.out.println("index = " + index);
+        sort(array, low,index - 1);
+        sort(array,index + 1, high);
     }
 
 }
