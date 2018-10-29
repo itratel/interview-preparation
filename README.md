@@ -1,7 +1,39 @@
 # interview-preparation
 interview-preparation
-### 面试准备
+## 面试准备
 
-#### 10大排序算法
-* [冒泡排序](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/BubbleSort.java)
+### 1.10大排序算法
+* [1.冒泡排序](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/BubbleSort.java)
+算法思想：从数组中第一个数开始，依次遍历数组中的每一个数，通过相邻比较交换，每一轮循环下来找出剩余未排序数的中的最大数并”冒泡”至数列的顶端
+算法步骤： 
+（1）从数组中第一个数开始，依次与下一个数比较并次交换比自己小的数，直到最后一个数。如果发生交换，则继续下面的步骤，如果未发生交换，则数组有序，排序结束，此时时间复杂度为O(n)； 
+（2）每一轮”冒泡”结束后，最大的数将出现在乱序数列的最后一位。重复步骤（1）。
 
+稳定性：稳定排序。
+
+时间复杂度： O(n)至O(n2)，平均时间复杂度为O(n2)。
+
+最好的情况：如果待排序数据序列为正序，则一趟冒泡就可完成排序，排序码的比较次数为n-1次，且没有移动，时间复杂度为O(n)。
+
+最坏的情况：如果待排序数据序列为逆序，则冒泡排序需要n-1次趟起泡，每趟进行n-i次排序码的比较和移动，即比较和移动次数均达到最大值： 
+比较次数:Cmax=∑i=1n−1(n−i)=n(n−1)/2=O(n2) 
+移动次数等于比较次数，因此最坏时间复杂度为O(n2)。
+* [2.快速排序](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/QuickSort.java)
+冒泡排序是在相邻的两个记录进行比较和交换，每次交换只能上移或下移一个位置，导致总的比较与移动次数较多。快速排序又称分区交换排序，是对冒泡排序的改进，快速排序采用的思想是分治思想。。
+
+算法思想： 
+(1)从待排序的n个记录中任意选取一个记录（通常选取第一个记录）为分区标准;
+
+(2)把所有小于该排序列的记录移动到左边，把所有大于该排序码的记录移动到右边，中间放所选记录，称之为第一趟排序；
+
+(3)然后对前后两个子序列分别重复上述过程，直到所有记录都排好序。
+
+稳定性：不稳定排序。
+
+时间复杂度： O（nlog2n）至O(n2)，平均时间复杂度为O（nlgn）。
+
+最好的情况：是每趟排序结束后，每次划分使两个子文件的长度大致相等，时间复杂度为O（nlog2n）。
+
+最坏的情况：是待排序记录已经排好序，第一趟经过n-1次比较后第一个记录保持位置不变，并得到一个n-1个元素的子记录；第二趟经过n-2次比较，将第二个记录定位在原来的位置上，并得到一个包括n-2个记录的子文件，依次类推，这样总的比较次数是： 
+
+Cmax=∑i=1n−1(n−i)=n(n−1)/2=O(n2)
