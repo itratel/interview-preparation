@@ -11,7 +11,7 @@ interview-preparation
 | 选择排序 | O(n2) | O(n2) | O(n) | O(1) | 不稳定 |
 
 #### 1.2 冒泡排序
-[冒泡排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/BubbleSort.java)
+[冒泡排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/algorithm/sort/BubbleSort.java)
 > 算法思想：从数组中第一个数开始，依次遍历数组中的每一个数，通过相邻比较交换，每一轮循环下来找出剩余未排序数的中的最大数并”冒泡”至数列的顶端
 
 算法步骤： 
@@ -27,7 +27,7 @@ interview-preparation
 移动次数等于比较次数，因此最坏时间复杂度为O(n2)。
 
 #### 1.2 快速排序
-[快速排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/QuickSort.java)
+[快速排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/algorithm/sort/QuickSort.java)
 快速排序（QuickSort）是对冒泡排序的一种改进
 > 算法思想： 通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。
 
@@ -46,7 +46,7 @@ interview-preparation
 比较次数：Cmax=∑i=1n−1(n−i)=n(n−1)/2=O(n2)
 
 #### 1.3 选择排序
-[选择排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/SelectSort.java)
+[选择排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/algorithm/sort/SelectSort.java)
 选择排序（Selection sort）是一种简单直观的排序算法
 > 算法思想： 每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法
 
@@ -62,7 +62,7 @@ interview-preparation
 
 
 #### 1.4 堆排序
-[堆排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/HeapSort.java)
+[堆排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/algorithm/sort/HeapSort.java)
 堆排序（HeapSort）是将数据看成是完全二叉树、根据完全二叉树的特性来进行排序的一种算法
 > 算法思想：最大堆要求节点的元素都要不小于其孩子，最小堆要求节点元素都不大于其左右孩子,那么处于最大堆的根节点的元素一定是这个堆中的最大值
 
@@ -78,7 +78,7 @@ interview-preparation
 最好的情况：如果待排序数组是逆序的，不仅需要O(nlogn)复杂度的比较操作，而且需要O(nlogn)复杂度的交换操作。总的时间复杂度还是O(nlogn)。
 
 #### 1.5 归并排序
-[归并排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/MergeSort.java)
+[归并排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/algorithm/sort/MergeSort.java)
 归并排序（Merge Sort）是建立在归并操作上的一种有效的排序算法
 > 算法思想：算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。
 
@@ -92,4 +92,18 @@ interview-preparation
 时间复杂度：O(nlogn) 
 最坏的情况：O(nlogn) 
 最坏的情况：O(nlogn) 
+
+#### 1.5 计数排序
+[计数排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/algorithm/sort/CountSort.java)
+计数排序（Count Sort）非基于比较的排序算法
+> 算法思想：对于给定的输入序列中的每一个元素x，确定该序列中值小于x的元素的个数（此处并非比较各元素的大小，而是通过对元素值的计数和计数值的累加来确定）。一旦有了这个信息，就可以将x直接存放到最终的输出序列的正确位置上。
+
+算法步骤：
+假设输入的线性表L的长度为n，L=L1,L2,..,Ln；线性表的元素属于有限偏序集S，|S|=k且k=O(n)，S={S1,S2,..Sk}；则计数排序可以描述如下：
+(1)扫描整个集合S，对每一个Si∈S，找到在线性表L中小于等于Si的元素的个数T(Si)；
+(2)扫描整个线性表L，对L中的每一个元素Li，将Li放在输出线性表的第T(Li)个位置上，并将T(Li)减1。
+
+稳定性： 稳定
+
+时间复杂度：最坏、最好和平均复杂度均为O(n+k)
 
