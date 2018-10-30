@@ -9,6 +9,7 @@ interview-preparation
 | 冒泡排序 | O(n2) | O(n2) | O(n) | O(1) | 稳定 |
 | 快速排序 | O(nlgn) | O(n2) | O(nlog2n) | O(1) | 不稳定 |
 | 选择排序 | O(n2) | O(n2) | O(n) | O(1) | 不稳定 |
+![各算法比较](https://github.com/whd-mtt/interview-preparation/blob/master/img/sort.png)
 
 #### 1.1 冒泡排序
 [冒泡排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/algorithm/sort/BubbleSort.java)
