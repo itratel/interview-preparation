@@ -28,7 +28,7 @@ interview-preparation
 
 #### 1.2 快速排序
 [快速排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/QuickSort.java)
-快速排序（Quicksort）是对冒泡排序的一种改进
+快速排序（QuickSort）是对冒泡排序的一种改进
 > 算法思想： 通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。
 
 算法步骤：
@@ -56,13 +56,14 @@ interview-preparation
 (3)然后对下标进行判断，如果这个元素的下标不是第一个元素的下标，就让第一个元素跟他交换一下值，这样就找到整个数组中最小的数了。然后找到数组中第二小的数，让他跟数组中第二个元素交换一下值，以此类推。
 
 稳定性：不稳定排序
+
 时间复杂度：最坏、最好和平均复杂度均为O(n2)
 比较次数：Cmax=∑i=1n−1(n−i)=n(n−1)/2=O(n2)
 
 
 #### 1.4 堆排序
 [堆排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/HeapSort.java)
-堆排序（Heapsort）是将数据看成是完全二叉树、根据完全二叉树的特性来进行排序的一种算法
+堆排序（HeapSort）是将数据看成是完全二叉树、根据完全二叉树的特性来进行排序的一种算法
 > 算法思想：最大堆要求节点的元素都要不小于其孩子，最小堆要求节点元素都不大于其左右孩子,那么处于最大堆的根节点的元素一定是这个堆中的最大值
 
 算法步骤：
@@ -75,4 +76,20 @@ interview-preparation
 时间复杂度：O(nlogn)
 最坏的情况：如果待排序数组是有序的，仍然需要O(nlogn)复杂度的比较操作，只是少了移动的操作；
 最好的情况：如果待排序数组是逆序的，不仅需要O(nlogn)复杂度的比较操作，而且需要O(nlogn)复杂度的交换操作。总的时间复杂度还是O(nlogn)。
+
+#### 1.5 归并排序
+[归并排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/MergeSort.java)
+归并排序（Merge Sort）是建立在归并操作上的一种有效的排序算法
+> 算法思想：算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。
+
+算法步骤：
+(1)将序列每相邻两个数字进行归并操作（merge)，形成floor(n/2+n%2)个序列，排序后每个序列包含两个元素
+(2)将上述序列再次归并，形成floor(n/4)个序列，每个序列包含四个元素
+(3)重复步骤2，直到所有元素排序完毕
+
+稳定性：稳定
+
+时间复杂度：O(nlogn) 
+最坏的情况：O(nlogn) 
+最坏的情况：O(nlogn) 
 

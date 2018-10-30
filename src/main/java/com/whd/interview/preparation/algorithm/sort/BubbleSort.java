@@ -1,7 +1,7 @@
-package com.whd.interview.preparation.sortalgorithm;
+package com.whd.interview.preparation.algorithm.sort;
 
-import static com.whd.interview.preparation.sortalgorithm.ArrayUtils.newArrayByLength;
-import static com.whd.interview.preparation.sortalgorithm.ArrayUtils.printArray;
+import static com.whd.interview.preparation.algorithm.utils.ArrayUtils.newArrayByLength;
+import static com.whd.interview.preparation.algorithm.utils.ArrayUtils.printArray;
 
 /**
  * @author whd.java@gmail.com

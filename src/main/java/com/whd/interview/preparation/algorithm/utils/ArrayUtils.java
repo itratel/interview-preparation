@@ -1,4 +1,4 @@
-package com.whd.interview.preparation.sortalgorithm;
+package com.whd.interview.preparation.algorithm.utils;
 
 import java.util.Arrays;
 import java.util.Random;
