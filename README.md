@@ -93,7 +93,7 @@ interview-preparation
 最坏的情况：O(nlogn) 
 最坏的情况：O(nlogn) 
 
-#### 1.5 计数排序
+#### 1.6 计数排序
 [计数排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/algorithm/sort/CountSort.java)
 计数排序（Count Sort）非基于比较的排序算法
 > 算法思想：对于给定的输入序列中的每一个元素x，确定该序列中值小于x的元素的个数（此处并非比较各元素的大小，而是通过对元素值的计数和计数值的累加来确定）。一旦有了这个信息，就可以将x直接存放到最终的输出序列的正确位置上。
@@ -106,4 +106,19 @@ interview-preparation
 稳定性： 稳定
 
 时间复杂度：最坏、最好和平均复杂度均为O(n+k)
+
+
+#### 1.7 桶排序
+[计数排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/algorithm/sort/BucketSort.java)
+桶排序 (Bucket sort)或所谓的箱排序，是一个排序算法
+> 算法思想：将数组分到有限数量的桶子里。每个桶子再个别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排序）
+
+算法步骤：
+(1)
+(2)
+
+稳定性：稳定
+
+时间复杂度：
+
 
