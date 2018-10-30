@@ -10,7 +10,7 @@ interview-preparation
 | 快速排序 | O(nlgn) | O(n2) | O(nlog2n) | O(1) | 不稳定 |
 | 选择排序 | O(n2) | O(n2) | O(n) | O(1) | 不稳定 |
 
-#### 1.2 冒泡排序
+#### 1.1 冒泡排序
 [冒泡排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/algorithm/sort/BubbleSort.java)
 > 算法思想：从数组中第一个数开始，依次遍历数组中的每一个数，通过相邻比较交换，每一轮循环下来找出剩余未排序数的中的最大数并”冒泡”至数列的顶端
 
@@ -114,11 +114,20 @@ interview-preparation
 > 算法思想：将数组分到有限数量的桶子里。每个桶子再个别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排序）
 
 算法步骤：
-(1)
-(2)
+(1)将数组所有的元素作为索引，存放到新的数组中
+(2)然后按照顺序取不为零的元素，存放在原数组中
 
 稳定性：稳定
 
-时间复杂度：
+时间复杂度：O(n+k)
+最坏的情况：O(n2)
+最好的情况：O(n)
 
+#### 1.8 基数排序
+[基数排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/algorithm/sort/RadixSort.java)
+基数排序 (Radix Sort)可以采用LSD（Least significant digital）或MSD（Most significant digital），LSD的排序方式由键值的最右边开始，而MSD则相反，由键值的最左边开始。
+> 算法思想：将所有待比较数值（正整数）统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后, 数列就变成一个有序序列。
 
+稳定性：稳定
+
+时间复杂度：最坏、最好和平均复杂度均为O(n * k)
