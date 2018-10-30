@@ -24,18 +24,20 @@ public class BucketSort {
      * @return array
      */
     private static int[] sort(int[] array){
-        int length = array.length;
-        int maxNum = 100;
-        int[] sorted = new int[maxNum + 1];
+        int maxNum = array.length;
         for (int anArray : array) {
-            //把数据放到对应索引的位置
-            sorted[anArray] = anArray;
+            maxNum = Math.max(maxNum, anArray);
         }
-        for (int i = 0; i < sorted.length; i++) {
-            if ( sorted[i] > 0){
-
+        int[] newArray = new int[maxNum + 1];
+        for (int ele : array) {
+            newArray[ele] = ele;
+        }
+        int k = 0;
+        for (int sort : newArray) {
+            if (sort > 0) {
+                array[k++] = sort;
             }
         }
-        return sorted;
+        return array;
     }
 }
