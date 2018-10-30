@@ -3,14 +3,20 @@ interview-preparation
 ## 面试准备
 
 ### 1.十大排序算法
+首先看哈各排序功能的算法
+| 排序算法 | 时间复杂度（平均） | 时间复杂度（最坏） | 时间复杂度（最好） | 空间复杂度 | 稳定性 |
+| ------ | ------ | ------ |------ |------ |------ |
+| 冒泡排序 | O(n2) | O(n2) | O(n) | O(1) | 稳定 |
+| 快速排序 | O(nlgn) | O(n2) | O(nlog2n) | O(1) | 不稳定 |
+| 选择排序 | O(n2) | O(n2) | O(n) | O(1) | 不稳定 |
 
 #### 1.2 冒泡排序
-[1.冒泡排序](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/BubbleSort.java)
+[冒泡排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/BubbleSort.java)
 > 算法思想：从数组中第一个数开始，依次遍历数组中的每一个数，通过相邻比较交换，每一轮循环下来找出剩余未排序数的中的最大数并”冒泡”至数列的顶端
 
 算法步骤： 
-（1）从数组中第一个数开始，依次与下一个数比较并次交换比自己小的数，直到最后一个数。如果发生交换，则继续下面的步骤，如果未发生交换，则数组有序，排序结束，此时时间复杂度为O(n)； 
-（2）每一轮”冒泡”结束后，最大的数将出现在乱序数列的最后一位。重复步骤（1）。
+(1)从数组中第一个数开始，依次与下一个数比较并次交换比自己小的数，直到最后一个数。如果发生交换，则继续下面的步骤，如果未发生交换，则数组有序，排序结束，此时时间复杂度为O(n)； 
+(2)每一轮”冒泡”结束后，最大的数将出现在乱序数列的最后一位。重复步骤（1）。
 
 稳定性：稳定排序。
 
@@ -21,7 +27,7 @@ interview-preparation
 移动次数等于比较次数，因此最坏时间复杂度为O(n2)。
 
 #### 1.2 快速排序
-[2.快速排序](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/QuickSort.java)
+[快速排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/QuickSort.java)
 快速排序（Quicksort）是对冒泡排序的一种改进
 > 算法思想： 通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。
 
@@ -37,12 +43,12 @@ interview-preparation
 时间复杂度： O（nlog2n）至O(n2)，平均时间复杂度为O（nlgn）。
 最好的情况：是每趟排序结束后，每次划分使两个子文件的长度大致相等，时间复杂度为O（nlog2n）。
 最坏的情况：是待排序记录已经排好序，第一趟经过n-1次比较后第一个记录保持位置不变，并得到一个n-1个元素的子记录；第二趟经过n-2次比较，将第二个记录定位在原来的位置上，并得到一个包括n-2个记录的子文件，依次类推，这样总的比较次数是： 
-Cmax=∑i=1n−1(n−i)=n(n−1)/2=O(n2)
+比较次数：Cmax=∑i=1n−1(n−i)=n(n−1)/2=O(n2)
 
 #### 1.3 选择排序
-[2.选择排序](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/SelectSort.java)
+[选择排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/SelectSort.java)
 选择排序（Selection sort）是一种简单直观的排序算法
-> 每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法
+> 算法思想： 每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法
 
 算法步骤：
 (1)对比数组中前一个元素跟后一个元素的大小，如果后面的元素比前面的元素小则用一个变量k来记住他的位置；
@@ -50,6 +56,23 @@ Cmax=∑i=1n−1(n−i)=n(n−1)/2=O(n2)
 (3)然后对下标进行判断，如果这个元素的下标不是第一个元素的下标，就让第一个元素跟他交换一下值，这样就找到整个数组中最小的数了。然后找到数组中第二小的数，让他跟数组中第二个元素交换一下值，以此类推。
 
 稳定性：不稳定排序
-最佳情况：T(n) = O(n2)
-最差情况：T(n) = O(n2)
-平均情况：T(n) = O(n2)
+时间复杂度：最坏、最好和平均复杂度均为O(n2)
+比较次数：Cmax=∑i=1n−1(n−i)=n(n−1)/2=O(n2)
+
+
+#### 1.4 堆排序
+[堆排序代码](https://github.com/whd-mtt/interview-preparation/blob/master/src/main/java/com/whd/interview/preparation/sortalgorithm/HeapSort.java)
+堆排序（Heapsort）是将数据看成是完全二叉树、根据完全二叉树的特性来进行排序的一种算法
+> 算法思想：最大堆要求节点的元素都要不小于其孩子，最小堆要求节点元素都不大于其左右孩子,那么处于最大堆的根节点的元素一定是这个堆中的最大值
+
+算法步骤：
+(1)将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；
+(2)将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]<=R[n]；
+(3)由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。
+
+稳定性：不稳定
+
+时间复杂度：O(nlogn)
+最坏的情况：如果待排序数组是有序的，仍然需要O(nlogn)复杂度的比较操作，只是少了移动的操作；
+最好的情况：如果待排序数组是逆序的，不仅需要O(nlogn)复杂度的比较操作，而且需要O(nlogn)复杂度的交换操作。总的时间复杂度还是O(nlogn)。
+

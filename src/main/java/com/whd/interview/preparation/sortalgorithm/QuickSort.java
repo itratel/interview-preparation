@@ -18,14 +18,14 @@ public class QuickSort {
     }
 
     /***
-     *
+     * 得到一个中间数的索引，中间数的左边都比他小，右边的都比他大
      * @param array array
      * @param low low
      * @param high high
      * @return int
      */
     private static int partition(int[] array, int low, int high){
-        //固定的切分方式
+        //将数组下标为low的元素作为基准数（通常是第一个数）
         int key = array[low];
         while(low < high){
             while(array[high] >= key && high > low){
@@ -53,7 +53,9 @@ public class QuickSort {
         }
         int index = partition(array, low, high);
         System.out.println("index = " + index);
+        //将中间数左边的无序数组在进行递归操作
         sort(array, low,index - 1);
+        //将中间数右边的无序数组在进行递归操作
         sort(array,index + 1, high);
     }
 

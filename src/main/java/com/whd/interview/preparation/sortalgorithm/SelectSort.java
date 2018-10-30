@@ -13,8 +13,8 @@ public class SelectSort {
     public static void main(String[] args) {
         int[] array = newArrayByLength(10);
         printArray( array, "Before sort: ");
-        sort(array);
-        printArray(array, "After sort: ");
+        int[] newArray = sort(array);
+        printArray(newArray, "After sort: ");
     }
 
     /***
