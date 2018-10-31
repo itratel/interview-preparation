@@ -1,6 +1,7 @@
 package com.whd.interview.preparation.algorithm.sort;
 
 
+
 import static com.whd.interview.preparation.algorithm.utils.ArrayUtils.newArrayByLength;
 import static com.whd.interview.preparation.algorithm.utils.ArrayUtils.printArray;
 
@@ -30,12 +31,11 @@ public class BucketSort {
         }
         int[] newArray = new int[maxNum + 1];
         for (int ele : array) {
-            newArray[ele] = ele;
+            newArray[ele]++;
         }
-        int k = 0;
-        for (int sort : newArray) {
-            if (sort > 0) {
-                array[k++] = sort;
+        for (int i = 0, k = 0; i < newArray.length; i++) {
+            for (int j = 0; j < newArray[i]; j++) {
+                array[k++] = i;
             }
         }
         return array;
