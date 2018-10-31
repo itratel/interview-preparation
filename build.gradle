@@ -27,6 +27,8 @@ repositories {
 
 dependencies {
 	compile('com.google.guava:guava:27.0-jre')
+	compile('org.apache.commons:commons-lang3:3.0')
+	implementation('org.springframework.boot:spring-boot-starter-web')
 	implementation('org.springframework.boot:spring-boot-starter-aop')
 	implementation('org.springframework.boot:spring-boot-starter-mail')
 	compileOnly('org.projectlombok:lombok')
