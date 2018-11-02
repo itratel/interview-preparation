@@ -1,6 +1,9 @@
 package com.whd.interview.preparation.java8.classlibapi.date;
 
 import java.time.*;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAmount;
+import java.time.temporal.TemporalUnit;
 import java.util.TimeZone;
 
 /**
@@ -23,13 +26,29 @@ public class TestDate {
         System.out.println("clock.millis() = " + clock.millis());
         System.out.println(System.currentTimeMillis());
 
-        //LocalDate
+        //获取当前时间
         LocalDate localDate = LocalDate.now(clock);
         System.out.println("localDate = " + localDate);
+        //从现在时间减去3天
+        LocalDate minusDays = localDate.minusDays(3);
+        System.out.println("minusDays = " + minusDays);
+        LocalDate minus = localDate.minus(4, ChronoUnit.DAYS);
+        System.out.println("minus = " + minus);
+        //从现在时间加1天
+        LocalDate plusDays = localDate.plusDays(1);
+        System.out.println("plusDays = " + plusDays);
+        LocalDate plus = localDate.plus(5, ChronoUnit.DAYS);
+        System.out.println("plus = " + plus);
+        LocalDate plus1 = localDate.plus(Period.ofDays(2));
+        System.out.println("plus1 = " + plus1);
 
         //LocalTime
         LocalTime localTime = LocalTime.now(clock);
         System.out.println("localTime = " + localTime);
+        LocalTime minusTime = localTime.minus(10, ChronoUnit.MINUTES);
+        System.out.println("minusTime = " + minusTime);
+        LocalTime minusHours = localTime.minus(Duration.ofHours(2));
+        System.out.println("minusHours = " + minusHours);
 
         //LocalDateTime
         LocalDateTime localDateTime = LocalDateTime.now(clock);
