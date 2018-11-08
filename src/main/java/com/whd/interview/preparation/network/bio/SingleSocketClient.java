@@ -43,8 +43,6 @@ public class SingleSocketClient {
                     flag = true;
                     break;
                 } else if ("Y".equalsIgnoreCase(str)) {
-                    dataOutputStream.write(5);
-                    dataOutputStream.flush();
                     break;
                 }
             }
