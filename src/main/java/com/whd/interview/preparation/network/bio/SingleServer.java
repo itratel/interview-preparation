@@ -11,9 +11,9 @@ import java.net.Socket;
  **/
 public class SingleServer {
 
-    public static final String SERVER_HOST = "127.0.0.1";
+    static final String SERVER_HOST = "127.0.0.1";
 
-    public static final int SERVER_PORT = 8888;
+    static final int SERVER_PORT = 9999;
 
     public static void main(String[] args) {
         try {
