@@ -1,12 +1,11 @@
 package com.whd.interview.preparation.callback.async;
 
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.whd.interview.preparation.callback.CallBackInterface;
 import com.whd.interview.preparation.callback.Student;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.*;
 
 /**
  * @author whd.java@gmail.com
@@ -16,6 +15,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @Slf4j
 public class TeacherB implements CallBackInterface {
 
+    private static final int THREAD_SIZE = Runtime.getRuntime().availableProcessors() * 2;
 
     private Student student;
 
@@ -29,7 +29,6 @@ public class TeacherB implements CallBackInterface {
      */
     @Override
     public String tellAnswer(String answer) {
-        log.info("very good，your answer is: {}", answer);
         return "very good，your answer is: " + answer;
     }
 
@@ -37,11 +36,14 @@ public class TeacherB implements CallBackInterface {
      * 老师向学生提问题
      */
     public String askQuestion(String question) {
-        new Thread(() -> {
-            //调用学生的解决问题的方法
-            student.solveQuestion(question, this);
-
-        }).start();
-        return null;
+        ThreadFactory namedFactory = new ThreadFactoryBuilder().setNameFormat("demo-pool-%d").build();
+        ExecutorService executorService = new ThreadPoolExecutor(THREAD_SIZE, THREAD_SIZE, 0,
+                TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<>(1024),
+                namedFactory,
+                new ThreadPoolExecutor.AbortPolicy());
+        executorService.submit(() -> student.solveQuestion(question, TeacherB.this));
+        executorService.shutdown();
+        return "请稍等，结果正在计算喔！！！";
     }
 }

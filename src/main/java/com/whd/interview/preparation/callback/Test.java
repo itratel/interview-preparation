@@ -14,8 +14,19 @@ public class Test {
 
     public static void main(String[] args) {
         Student stu = new Mtt();
-        TeacherB teacher = new TeacherB(stu);
-        String answer = teacher.askQuestion("你是什么人？");
-        log.info("问答结束了");
+        TeacherB teacherB = new TeacherB(stu);
+        String answer = teacherB.askQuestion("你是什么人？");
+        log.info("answer: {}", answer);
+        log.info("teacherB问答结束了");
+        log.info("teacherB现在下课了");
+
+        log.info("------------------------------------------------");
+        Student student = new Whd();
+        TeacherA teacherA = new TeacherA(student);
+        String result = teacherA.askQuestion("你是哪里人？");
+        log.info("result: {}", result);
+        log.info("teacherA问答结束了");
+        log.info("teacherA现在下课了");
+
     }
 }
