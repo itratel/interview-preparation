@@ -1,4 +1,6 @@
-package com.whd.interview.preparation.callback;
+package com.whd.interview.preparation.callback.interfaces;
+
+import com.whd.interview.preparation.callback.entity.Answer;
 
 /**
  * @author whd.java@gmail.com
@@ -13,4 +15,11 @@ public interface CallBackInterface {
      * @return String
      */
     String tellAnswer(String answer);
+
+    /***
+     * 学生解决完毕告诉老师答案的回调函数
+     * @param answer
+     * @return
+     */
+    Answer tellAnswer0(Answer answer);
 }
