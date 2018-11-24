@@ -1,4 +1,4 @@
-package com.whd.interview.preparation.network.bio;
+package com.whd.interview.preparation.network.bio.middle;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -26,6 +26,7 @@ public class SingleServer {
     private static void newServer() throws IOException {
         //创建一个新的ServerSocket,用来监听指定端口(SERVER_PORT)的连接请求
         ServerSocket serverSocket = new ServerSocket(SERVER_PORT);
+        System.out.println("BIOServer has started, listening on port" + serverSocket.getLocalSocketAddress());
         //accept()方法的调用将被阻塞，直到一个连接建立
         Socket socket = serverSocket.accept();
         //获取socket连接的输入流

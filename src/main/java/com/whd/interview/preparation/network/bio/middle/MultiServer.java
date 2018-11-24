@@ -1,4 +1,4 @@
-package com.whd.interview.preparation.network.bio;
+package com.whd.interview.preparation.network.bio.middle;
 
 import java.io.IOException;
 import java.net.ServerSocket;
