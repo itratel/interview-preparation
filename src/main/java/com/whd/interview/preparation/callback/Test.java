@@ -26,21 +26,13 @@ public class Test {
         log.info("teacherB问答结束了");
         log.info("teacherB现在下课了");
 
-//        log.info("------------------------------------------------");
-//        Student student = new Whd();
-//        TeacherA teacherA = new TeacherA(student);
-//        Answer result = teacherA.askQuestion(Question.of("wt123", "问题1", "你是哪里人"));
-//        log.info("result: {}", result);
-//        log.info("teacherA问答结束了");
-//        log.info("teacherA现在下课了");
-
-//        log.info("------------------------------------------------");
-//        Student whd = new Whd();
-//        TeacherC teacherC = new TeacherC(whd);
-//        Answer result = teacherC.askQuestion(Question.of("123", "问题1", "你是哪里人"));
-//        log.info("result: {}", result);
-//        log.info("teacherC问答结束了");
-//        log.info("teacherC现在下课了");
+        log.info("------------------------------------------------");
+        Student student = new Whd();
+        TeacherA teacherA = new TeacherA(student);
+        Answer result = teacherA.askQuestion(Question.of("wt123", "问题1", "你是哪里人"));
+        log.info("result: {}", result);
+        log.info("teacherA问答结束了");
+        log.info("teacherA现在下课了");
 
     }
 }
