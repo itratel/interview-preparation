@@ -43,10 +43,10 @@ public class FieldCopy {
         return dto;
     }
 
-    @Mapper
+    @Mapper(componentModel = "spring")
     public interface PetMapper {
 
-        PetMapper mapper = Mappers.getMapper(PetMapper.class);
+//        PetMapper mapper = Mappers.getMapper(PetMapper.class);
 
         @Mappings({
                 @Mapping(source = "name", target = "name"),
@@ -55,10 +55,13 @@ public class FieldCopy {
         })
         PetDto toPetDto(Pet pet);
 
-        @InheritInverseConfiguration
-        Pet fromPetDto(PetDto petDto);
-
+//        @InheritInverseConfiguration
+//        Pet fromPetDto(PetDto petDto);
     }
 
+//    public static void main(String[] args) {
+//        PetDto petDto = PetMapper.mapper.toPetDto(new Pet("whd", 20, "male"));
+//        System.out.println("petDto = " + petDto);
+//    }
 
 }
