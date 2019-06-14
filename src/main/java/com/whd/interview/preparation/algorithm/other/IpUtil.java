@@ -1,4 +1,4 @@
-package com.whd.interview.preparation.ip;
+package com.whd.interview.preparation.algorithm.other;
 
 import cn.hutool.core.util.StrUtil;
 import lombok.Data;
