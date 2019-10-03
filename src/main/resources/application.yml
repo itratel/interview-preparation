@@ -1,0 +1,5 @@
+spring:
+  properties:
+    username: itratel
+    gender: male
+    age: 25
