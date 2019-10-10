@@ -1,34 +1,43 @@
 package com.whd.interview.preparation.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.bind.Bindable;
 import org.springframework.boot.context.properties.bind.Binder;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
-import static com.whd.interview.preparation.utils.SpringContext.getApplicationContext;
 
 /**
  * @author whd.java@gmail.com
  * @date 2019/10/03 23:22
  * @apiNote Describe the function of this class in one sentence
  */
-public class PropertiesContext {
+@Slf4j
+@Component
+public class PropertiesContext implements EnvironmentAware {
 
-    private static final ApplicationContext APPLICATION_CONTEXT = getApplicationContext();
+    private static Environment environment;
+
+    /**
+     * Set the {@code Environment} that this component runs in.
+     *
+     * @param environment
+     */
+    @Override
+    public void setEnvironment(Environment environment) {
+        PropertiesContext.environment = environment;
+    }
 
     /***
-     * 获取上下文环境
+     * 返回环境变量
      * @return {@link Environment}
      */
-    private static Environment getEnvironment() {
-        if (Objects.nonNull(APPLICATION_CONTEXT)) {
-            return APPLICATION_CONTEXT.getEnvironment();
-        }
-        throw new RuntimeException("上下文为空");
+    public static Environment getEnvironment() {
+        return environment;
     }
 
     /***
@@ -36,7 +45,7 @@ public class PropertiesContext {
      * @return {@link Binder}
      */
     public static Binder getBinder() {
-        return Binder.get(getEnvironment());
+        return Binder.get(environment);
     }
 
     /***
