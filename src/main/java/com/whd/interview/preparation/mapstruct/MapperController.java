@@ -1,4 +1,4 @@
-package com.whd.interview.preparation.test;
+package com.whd.interview.preparation.mapstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

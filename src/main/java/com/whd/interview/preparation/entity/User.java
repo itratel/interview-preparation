@@ -1,6 +1,9 @@
 package com.whd.interview.preparation.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 /**
  * @author whd.java@gmail.com
@@ -8,6 +11,9 @@ import lombok.Data;
  * @apiNote Describe the function of this class in one sentence
  */
 @Data
+@Accessors(chain = true)
+@NoArgsConstructor
+@AllArgsConstructor(staticName = "of")
 public class User {
 
     private String username;
