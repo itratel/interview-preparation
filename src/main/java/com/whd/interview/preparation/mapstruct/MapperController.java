@@ -15,7 +15,7 @@ public class MapperController {
 
 
     @Autowired
-    private FieldCopy.PetMapper mapper;
+    private FieldCopy mapper;
 
     @RequestMapping("/index")
     public PetDto index(){
