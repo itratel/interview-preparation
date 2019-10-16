@@ -21,4 +21,6 @@ public class User {
     private String gender;
 
     private String age;
+
+    private Integer ranking;
 }

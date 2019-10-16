@@ -13,27 +13,40 @@ import java.util.stream.Collectors;
  */
 public class TestMapSort {
 
-    private static Map<String, List<User>> map = new LinkedHashMap<>();
+    private static Map<String, List<User>> sortMap = new LinkedHashMap<>();
+
+    private static final List<String> NAME_LIST = Lists.newArrayList("panda");
 
     private static List<User> userList = Lists.newArrayList(
-            User.of("whd", "男", "23.02"),
-            User.of("admin", "未知", "20.15"),
-            User.of("mtt", "女", "5.98"),
-            User.of("wsx", "女", "50.56"),
-            User.of("wsz", "女", "50.56"),
-            User.of("user", "女", "0.26"),
-            User.of("panda", "女", ""),
-            User.of("dog", "女", null)
+            User.of("whd", "男", "23.02", null),
+            User.of("admin", "未知", "20.15", null),
+            User.of("mtt", "女", "5.98", null),
+            User.of("wsx", "女", "50.56", null),
+            User.of("wsz", "女", "50.56", null),
+            User.of("user", "女", "0.26", null),
+            User.of("panda", "女", "0.19", null),
+            User.of("dog", "女", null, null)
     );
 
     public static void main(String[] args) {
         //分组
         Map<String, List<User>> userGroupMap = userList.stream()
-                .filter(obj -> Objects.nonNull(obj.getAge())).collect(Collectors.groupingBy(User::getAge));
+                .filter(e -> Objects.nonNull(e.getAge()) && !NAME_LIST.contains(e.getUsername())).collect(Collectors.groupingBy(User::getAge));
 
         userGroupMap.entrySet().stream().sorted(CustomComparator::comparing)
-                .forEachOrdered(x -> map.put(x.getKey(), x.getValue()));
-        System.out.println("map = " + map);
+                .forEachOrdered(x -> sortMap.put(x.getKey(), x.getValue()));
+
+        //设置排名
+        int index = 1;
+        for (Map.Entry<String, List<User>> entry : sortMap.entrySet()) {
+            for (User user : entry.getValue()) {
+                user.setRanking(index);
+            }
+            index++;
+        }
+        System.out.println("userList = " + userList);
     }
+
+
 
 }

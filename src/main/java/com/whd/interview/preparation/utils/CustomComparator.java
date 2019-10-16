@@ -16,7 +16,7 @@ public class CustomComparator {
         if (StrUtil.isBlank(o1.getKey()) || StrUtil.isBlank(o2.getKey())) {
             return 0;
         }
-        return -Double.valueOf(o1.getKey()).compareTo(Double.valueOf(o2.getKey()));
+        return Double.valueOf(o1.getKey()).compareTo(Double.valueOf(o2.getKey()));
     }
 
 }
