@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class EventHandler {
 
-    @EventListener
+    @EventListener(condition = "#user != null")
     public void save(User user) {
         System.out.println("user = " + user);
     }

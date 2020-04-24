@@ -3,8 +3,8 @@ package com.whd.interview.preparation.java8.classlibapi.parallel;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.whd.interview.preparation.algorithm.utils.ArrayUtils.newArrayByLength;
-import static com.whd.interview.preparation.algorithm.utils.ArrayUtils.printArray;
+import static com.whd.interview.preparation.utils.ArrayUtil.newArrayByLength;
+import static com.whd.interview.preparation.utils.ArrayUtil.printArray;
 
 /**
  * @author whd.java@gmail.com
