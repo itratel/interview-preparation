@@ -1,7 +1,6 @@
 package com.whd.interview.preparation.utils;
 
-import lombok.experimental.UtilityClass;
-
+import java.util.Arrays;
 import java.util.Collection;
 
 /**
@@ -12,16 +11,24 @@ import java.util.Collection;
  * @version 0.0.1
  * @since 0.0.1
  */
-@UtilityClass
-public class PrintUtil {
+public final class PrintUtil {
 
     /***
      * print collection data
      * @param data data
      * @param <T> type of param
      */
-    public <T> void printCollection(Collection<T> data) {
+    public static <T> void printCollection(Collection<T> data) {
         data.forEach(System.out::println);
+    }
+
+
+    /***
+     * print array data
+     * @param data array data
+     */
+    public static void printArray(int[] data, String flag){
+        System.out.println(flag + Arrays.toString(data));
     }
 
 }

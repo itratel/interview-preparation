@@ -3,7 +3,7 @@ package com.whd.interview.preparation.algorithm.sort;
 
 
 import static com.whd.interview.preparation.utils.ArrayUtil.newArrayByLength;
-import static com.whd.interview.preparation.utils.ArrayUtil.printArray;
+import static com.whd.interview.preparation.utils.PrintUtil.printArray;
 
 /**
  * @author whd.java@gmail.com
