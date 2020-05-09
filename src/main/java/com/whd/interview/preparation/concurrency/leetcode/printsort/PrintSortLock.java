@@ -38,6 +38,8 @@ public class PrintSortLock {
 
     public void first(Runnable printFirst) throws InterruptedException {
         synchronized (lock) {
+            String name = Thread.currentThread().getName();
+            System.out.println(name + " 获得锁成功！");
             // printFirst.run() outputs "first". Do not change or remove this line.
             printFirst.run();
             firstFinished = true;
@@ -47,7 +49,10 @@ public class PrintSortLock {
 
     public void second(Runnable printSecond) throws InterruptedException {
         synchronized (lock) {
+            String name = Thread.currentThread().getName();
+            System.out.println(name + " 获得锁成功！");
             while (!firstFinished) {
+                System.out.println(Thread.currentThread().getName() + " 释放了锁。");
                 lock.wait();
             }
             // printSecond.run() outputs "second". Do not change or remove this line.
@@ -60,23 +65,46 @@ public class PrintSortLock {
     public void third(Runnable printThird) throws InterruptedException {
 
         synchronized (lock) {
+            String name = Thread.currentThread().getName();
+            System.out.println(name + " 获得锁成功！");
             while (!secondFinished) {
+                System.out.println(name + " 释放了锁。");
                 lock.wait();
             }
-
             // printThird.run() outputs "third". Do not change or remove this line.
             printThird.run();
         }
     }
 
    
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         PrintSortLock printSort = new PrintSortLock();
         Runnable printer1 = () -> System.out.println("one");
         Runnable printer2 = () -> System.out.println("two");
         Runnable printer3 = () -> System.out.println("three");
-        printSort.first(printer1);
-        printSort.second(printer2);
-        printSort.third(printer3);
+
+        new Thread(() -> {
+            try {
+                printSort.second(printer2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, "Thread B").start();
+
+        new Thread(() -> {
+            try {
+                printSort.third(printer3);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, "Thread C").start();
+
+        new Thread(() -> {
+            try {
+                printSort.first(printer1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, "Thread A").start();
     }
 }

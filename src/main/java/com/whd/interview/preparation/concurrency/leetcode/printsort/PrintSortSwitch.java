@@ -59,12 +59,34 @@ public class PrintSortSwitch {
 
    
     public static void main(String[] args) throws InterruptedException {
-        PrintSortSwitch printSort = new PrintSortSwitch();
+
+        PrintSortLock printSort = new PrintSortLock();
         Runnable printer1 = () -> System.out.println("one");
         Runnable printer2 = () -> System.out.println("two");
         Runnable printer3 = () -> System.out.println("three");
-        printSort.first(printer1);
-        printSort.second(printer2);
-        printSort.third(printer3);
+
+        new Thread(() -> {
+            try {
+                printSort.second(printer2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, "Thread B").start();
+
+        new Thread(() -> {
+            try {
+                printSort.third(printer3);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, "Thread C").start();
+
+        new Thread(() -> {
+            try {
+                printSort.first(printer1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, "Thread A").start();
     }
 }
