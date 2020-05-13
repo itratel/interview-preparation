@@ -1,4 +1,4 @@
-package com.whd.interview.preparation.leetcode.sum;
+package com.whd.interview.preparation.leetcode.algorithm.sum;
 
 import com.whd.interview.preparation.utils.PrintUtil;
 

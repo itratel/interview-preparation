@@ -1,4 +1,4 @@
-package com.whd.interview.preparation.leetcode.printsort;
+package com.whd.interview.preparation.leetcode.multithread.printsort;
 
 import java.util.concurrent.CountDownLatch;
 
