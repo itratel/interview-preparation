@@ -189,7 +189,6 @@ public class MonitorThreadPool extends ThreadPoolExecutor {
      */
     @Override
     protected void beforeExecute(Thread t, Runnable r) {
-        super.beforeExecute(t, r);
         log.info("--------------------------------start-----------------------------------------------");
         log.info("当前线程池正在执行任务: {}个", this.getActiveCount());
         log.info("当前线程池已经完成的任务: {}个", this.getCompletedTaskCount());

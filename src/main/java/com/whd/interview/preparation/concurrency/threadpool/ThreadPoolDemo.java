@@ -25,7 +25,7 @@ public class ThreadPoolDemo {
                 namedFactory,
                 new ThreadPoolExecutor.AbortPolicy());
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 3; i++) {
             Future<String> future = executorService.submit(MyTask.of(i));
             if (future.isDone()){
                 String result = future.get();
