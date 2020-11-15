@@ -17,6 +17,8 @@ package com.whd.interview.preparation.leetcode.algorithm.sumlinkedlist;
 //leetcode submit region begin(Prohibit modification and deletion)
 
 
+import com.whd.interview.preparation.algorithm.linkedlist.base.ListNode;
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -65,26 +67,6 @@ public class Solution {
         cur = head.next = new ListNode(a / 10 % 10);
         cur.next = new ListNode(a / 100);
         return head;
-    }
-
-
-    /***
-     * 节点值
-     */
-    static class ListNode {
-        /***
-         * 具体值
-         */
-        int val;
-
-        /***
-         * 下一个节点
-         */
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
     }
 
     public static void main(String[] args) {

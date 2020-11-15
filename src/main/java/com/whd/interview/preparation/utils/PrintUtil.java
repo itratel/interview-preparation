@@ -1,5 +1,7 @@
 package com.whd.interview.preparation.utils;
 
+import com.whd.interview.preparation.algorithm.linkedlist.base.ListNode;
+
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -29,6 +31,21 @@ public final class PrintUtil {
      */
     public static void printArray(int[] data, String flag){
         System.out.println(flag + Arrays.toString(data));
+    }
+
+    /***
+     * print linked list
+     * @param head  linked list head
+     */
+    public static void printLinkedList(ListNode head) {
+        StringBuilder builder = new StringBuilder();
+        ListNode current = head;
+        while (current != null) {
+            builder.append(current.val).append("->");
+            current = current.next;
+        }
+        builder.append("NULL");
+        System.out.println("链表为：" + builder.toString());
     }
 
 }
