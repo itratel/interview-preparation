@@ -1,10 +1,15 @@
 package com.whd.interview.preparation.java8.classlibapi.concurrency;
 
+import com.whd.interview.preparation.utils.DateUtil;
 import lombok.SneakyThrows;
+import org.junit.Test;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
+
+import static com.whd.interview.preparation.utils.DateUtil.now;
 
 /**
  * <p>TestCompleteService<p/>
@@ -16,17 +21,61 @@ import java.util.concurrent.TimeUnit;
  */
 public class TestCompletableFuture {
 
-
+    @Test
     @SneakyThrows
-    public static void main(String[] args) {
-
-//            test1();
-//            test2();
-        testDependency();
+    public void testDemo() {
+        CompletableFuture<String> completableFuture = new CompletableFuture<>();
+        System.out.println("现在开始获取数据!");
+        //手动完成时间的
+        completableFuture.complete("Future's Result");
+        completableFuture.get();
     }
 
 
-    public static void test1() throws ExecutionException, InterruptedException {
+    @Test
+    @SneakyThrows
+    public void testRunAsync() {
+        CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+            // Simulate a long-running Job
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                throw new IllegalStateException(e);
+            }
+            System.out.println("时间: " + now() + " I'll run in a separate thread than the main thread.");
+        });
+
+        System.out.println("时间: " + now() + " future================================ ");
+
+        // Block and wait for the future to complete
+        future.get();
+        System.out.println("时间: " + now() + " future================================end ");
+    }
+
+    @Test
+    @SneakyThrows
+    public void testSupplyAsync() {
+        CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+            // Simulate a long-running Job
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                throw new IllegalStateException(e);
+            }
+            System.out.println("时间: " + now() + " I'll run in a separate thread than the main thread.");
+            return "Result of the asynchronous computation";
+        });
+
+        System.out.println("时间: " + now() + " future================================ ");
+
+        // Block and wait for the future to complete
+        String result = future.get();
+        System.out.println("时间: " + now() + " future================================ " + result);
+    }
+
+    @SneakyThrows
+    @Test
+    public void test()  {
         CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> "12a3d4b5R6")
                 .thenApplyAsync(String::toUpperCase)
                 .thenApplyAsync(e -> {
@@ -56,7 +105,8 @@ public class TestCompletableFuture {
      * @throws ExecutionException
      * @throws InterruptedException
      */
-    public static void test2() throws ExecutionException, InterruptedException {
+    @Test
+    public void tests() throws ExecutionException, InterruptedException {
         CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
             int a = 10 / 0;
             return 1;
@@ -76,16 +126,19 @@ public class TestCompletableFuture {
     /***
      * test dependency
      */
-    public static void testDependency() throws ExecutionException, InterruptedException {
-        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> 5).thenApply((r) -> {
-            r = r + 10;
-            return r;
-        }).whenComplete((res, exception) -> {
-            if (exception == null) {
-                System.out.println("res = " + res);
-            }
-        });
-
+    @Test
+    public void testss() throws ExecutionException, InterruptedException {
+        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> 5)
+                .thenApply((r) -> {
+                    r = r + 10;
+                    return r;
+                }).whenComplete((res, exception) -> {
+                    if (exception == null) {
+                        System.out.println("res = " + res);
+                    }
+                });
+        Integer integer1 = future.get();
+        System.out.println("integer1 = " + integer1);
         //出现了异常，handle方法可以拿到异常 e
         CompletableFuture<Integer> handle = CompletableFuture.supplyAsync(() -> {
             int i = 10 / 0;
@@ -100,7 +153,4 @@ public class TestCompletableFuture {
         Integer integer = handle.get();
         System.out.println("integer = " + integer);
     }
-
-
-
 }
