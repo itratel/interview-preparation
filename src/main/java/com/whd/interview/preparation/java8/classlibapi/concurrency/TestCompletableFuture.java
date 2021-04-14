@@ -73,6 +73,24 @@ public class TestCompletableFuture {
         System.out.println("时间: " + now() + " future================================ " + result);
     }
 
+
+    @SneakyThrows
+    @Test
+    public void testAccept() {
+        CompletableFuture<String> future = CompletableFuture
+                .supplyAsync(() -> "Hello")
+                .thenApply(s -> s + " World")
+                .thenApply(String::toUpperCase)
+//                .thenAccept(s -> System.out.println("s = " + s));
+//                .thenRun(() -> System.out.println("我是来呵呵的"))
+                .whenComplete((a, ex) -> {
+                    if (ex == null) {
+                        System.out.println("a = " + a);;
+                    }
+                });
+        System.out.println("future.get() = " + future.get());
+    }
+
     @SneakyThrows
     @Test
     public void test()  {
